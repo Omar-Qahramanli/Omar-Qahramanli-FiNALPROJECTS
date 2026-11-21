@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezervasiya — Sahil Restoranı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">🌊 Sahil Restoranı</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Ana</a></li>
+                <li><a href="menu.html">Menyu</a></li>
+                <li><a href="qalereya.html">Qalereya</a></li>
+                <li><a href="reyler.html">Rəylər</a></li>
+                <li><a href="rezervasiya.html" class="active">Rezervasiya</a></li>
+                <li><a href="elaqe.html">Əlaqə</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </nav>
+    </header>
+
+    <section class="page-title">
+        <h1>Masa Rezerv Et</h1>
+        <p>Formu doldurun, biz sizinlə əlaqə saxlayacağıq</p>
+    </section>
+
+    <section class="reservation">
+        <form class="reservation-form" id="reservationForm">
+            <div class="form-group">
+                <label for="ad">Adınız</label>
+                <input type="text" id="ad" placeholder="Adınızı yazın" required>
+            </div>
+            <div class="form-group">
+                <label for="telefon">Telefon</label>
+                <input type="tel" id="telefon" placeholder="+994 XX XXX XX XX" required>
+            </div>
+            <div class="form-group">
+                <label for="tarix">Tarix</label>
+                <input type="date" id="tarix" required>
+            </div>
+            <div class="form-group">
+                <label for="saat">Saat</label>
+                <input type="time" id="saat" required>
+            </div>
+            <div class="form-group">
+                <label for="say">Nəfər sayı</label>
+                <select id="say" required>
+                    <option value="">Seçin</option>
+                    <option value="1">1 nəfər</option>
+                    <option value="2">2 nəfər</option>
+                    <option value="3">3 nəfər</option>
+                    <option value="4">4 nəfər</option>
+                    <option value="5+">5+ nəfər</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="masa">Masa növü</label>
+                <select id="masa" required>
+                    <option value="">Seçin</option>
+                    <option value="pəncərə">Pəncərə kənarı</option>
+                    <option value="terras">Terras</option>
+                    <option value="daxili">Daxili zal</option>
+                    <option value="vip">VIP</option>
+                </select>
+            </div>
+            <div class="form-group full">
+                <label for="qeyd">Əlavə qeyd (istəyə bağlı)</label>
+                <textarea id="qeyd" rows="3" placeholder="Xüsusi istəyiniz varsa yazın..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-submit">Rezervasiya Et</button>
+        </form>
+        <div class="form-message" id="formMessage"></div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 Sahil Restoranı. Bütün hüquqlar qorunur.</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">↑</button>
+    <script src="script.js"></script>
+</body>
+</html>

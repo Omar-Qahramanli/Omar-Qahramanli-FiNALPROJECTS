@@ -81,7 +81,6 @@ if (reservationForm) {
 }
 
 
-
 const backToTop = document.getElementById('backToTop');
 
 window.addEventListener('scroll', function () {
@@ -96,3 +95,82 @@ backToTop.addEventListener('click', function () {
     window.scrollTo(0, 0);
 });
 
+
+
+const hoursStatus = document.getElementById('hoursStatus');
+
+if (hoursStatus) {
+    const indi = new Date();
+    const saat = indi.getHours();
+    const gun = indi.getDay();
+
+    let aciqdir = false;
+
+    if (gun === 0) {
+        aciqdir = saat >= 11 && saat < 22;
+    } else if (gun === 6) {
+        aciqdir = saat >= 10;
+    } else {
+        aciqdir = saat >= 10 && saat < 23;
+    }
+
+    if (aciqdir) {
+        hoursStatus.textContent = '🟢 Hazırda AÇIQDIR';
+        hoursStatus.classList.add('open');
+    } else {
+        hoursStatus.textContent = '🔴 Hazırda BAĞLIDIR';
+        hoursStatus.classList.add('closed');
+    }
+}
+
+
+
+const searchInput = document.getElementById('searchInput');
+const sortSelect = document.getElementById('sortSelect');
+
+if (searchInput) {
+    searchInput.addEventListener('input', function () {
+        const axtaris = searchInput.value.toLowerCase();
+        const aktivGrid = document.querySelector('.menu-grid.active');
+
+        if (!aktivGrid) return;
+
+        const yemekler = aktivGrid.querySelectorAll('.menu-item');
+
+        yemekler.forEach(function (yemek) {
+            const ad = yemek.dataset.ad.toLowerCase();
+
+            if (ad.includes(axtaris)) {
+                yemek.classList.remove('hidden');
+            } else {
+                yemek.classList.add('hidden');
+            }
+        });
+    });
+}
+
+if (sortSelect) {
+    sortSelect.addEventListener('change', function () {
+        const secim = sortSelect.value;
+        const aktivGrid = document.querySelector('.menu-grid.active');
+
+        if (!aktivGrid || secim === 'default') return;
+
+        const yemekler = Array.from(aktivGrid.querySelectorAll('.menu-item'));
+
+        yemekler.sort(function (a, b) {
+            const qiymetA = parseFloat(a.dataset.qiymet);
+            const qiymetB = parseFloat(b.dataset.qiymet);
+
+            if (secim === 'low') {
+                return qiymetA - qiymetB;
+            } else {
+                return qiymetB - qiymetA;
+            }
+        });
+
+        yemekler.forEach(function (yemek) {
+            aktivGrid.appendChild(yemek);
+        });
+    });
+}

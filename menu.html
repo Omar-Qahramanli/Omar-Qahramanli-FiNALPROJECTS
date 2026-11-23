@@ -29,99 +29,228 @@
     </section>
 
     <section class="menu">
+        <div class="menu-controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Yemək axtar...">
+            </div>
+            <div class="sort-box">
+                <select id="sortSelect">
+                    <option value="default">Sıralama</option>
+                    <option value="low">Əvvəl ucuz</option>
+                    <option value="high">Əvvəl baha</option>
+                </select>
+            </div>
+        </div>
+
         <div class="menu-tabs">
             <button class="tab-btn active" data-tab="kabab">Kabablar</button>
+            <button class="tab-btn" data-tab="burger">Burgerlər</button>
             <button class="tab-btn" data-tab="salat">Salatlar</button>
             <button class="tab-btn" data-tab="desert">Desertlər</button>
             <button class="tab-btn" data-tab="ickiler">İçkilər</button>
         </div>
 
+      
         <div class="menu-grid active" data-content="kabab">
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/8681915/pexels-photo-8681915.jpeg" alt="Tikə kabab">
+            <div class="menu-item" data-ad="Tikə Kabab" data-qiymet="12">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500" alt="Tikə kabab">
                 <h3>Tikə Kabab</h3>
                 <p>Ənənəvi Azərbaycan tikə kababı.</p>
                 <span class="price">12 ₼</span>
             </div>
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/36169136/pexels-photo-36169136.jpeg" alt="Lülə kabab">
+            <div class="menu-item" data-ad="Lülə Kabab" data-qiymet="14">
+                <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=500" alt="Lülə kabab">
                 <h3>Lülə Kabab</h3>
                 <p>Quzu ətindən hazırlanmış lülə kabab.</p>
                 <span class="price">14 ₼</span>
             </div>
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/37322777/pexels-photo-37322777.jpeg" alt="Toyuq kabab">
+            <div class="menu-item" data-ad="Toyuq Kabab" data-qiymet="10">
+                <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=500" alt="Toyuq kabab">
                 <h3>Toyuq Kabab</h3>
                 <p>Yumşaq toyuq ətindən kabab.</p>
                 <span class="price">10 ₼</span>
             </div>
-            <div class="menu-item">
-                <img src="data:image/jpeg;base64,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" alt="Antrikot">
+            <div class="menu-item" data-ad="Antrikot" data-qiymet="20">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500" alt="Antrikot">
                 <h3>Antrikot</h3>
                 <p>Qril edilmiş mal əti.</p>
                 <span class="price">20 ₼</span>
             </div>
         </div>
 
+       
+        <div class="menu-grid" data-content="burger">
+            <div class="menu-item" data-ad="Klassik Burger" data-qiymet="12">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500" alt="Klassik Burger">
+                <h3>Klassik Burger</h3>
+                <p>Mal əti kotleti, pendir, kahı, pomidor, xüsusi sous.</p>
+                <span class="price">12 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Çizburger" data-qiymet="13">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=500" alt="Çizburger">
+                <h3>Çizburger</h3>
+                <p>İkiqat pendir, mal əti kotleti, turşu və sous.</p>
+                <span class="price">13 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Toyuq Burger" data-qiymet="10">
+                <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=500" alt="Toyuq Burger">
+                <h3>Toyuq Burger</h3>
+                <p>Qızardılmış toyuq filesi, təzə tərəvəzlər, mayonez.</p>
+                <span class="price">10 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Veggi Burger" data-qiymet="9">
+                <img src="https://images.unsplash.com/photo-1520072959219-c595dc870360?w=500" alt="Veggi Burger">
+                <h3>Veggi Burger</h3>
+                <p>Bitki əsaslı kotlet, avokado, təzə göyərti.</p>
+                <span class="price">9 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="BBQ Burger" data-qiymet="14">
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=500" alt="BBQ Burger">
+                <h3>BBQ Burger</h3>
+                <p>Barbekü sousu, qızardılmış soğan, mal əti kotleti.</p>
+                <span class="price">14 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Double Burger" data-qiymet="16">
+                <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500" alt="Double Burger">
+                <h3>Double Burger</h3>
+                <p>İkiqat mal əti kotleti, ikiqat pendir, xüsusi sous.</p>
+                <span class="price">16 ₼</span>
+            </div>
+        </div>
+
         <div class="menu-grid" data-content="salat">
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/38986888/pexels-photo-38986888.jpeg" alt="Çoban salatı">
+            <div class="menu-item" data-ad="Çoban Salatı" data-qiymet="8">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500" alt="Çoban salatı">
                 <h3>Çoban Salatı</h3>
                 <p>Təzə tərəvəzlərdən hazırlanmış salat.</p>
                 <span class="price">8 ₼</span>
             </div>
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/36798132/pexels-photo-36798132.jpeg" alt="Sezar">
+            <div class="menu-item" data-ad="Sezar Salatı" data-qiymet="10">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500" alt="Sezar salatı">
                 <h3>Sezar Salatı</h3>
                 <p>Toyuq, kruton və xüsusi sous ilə.</p>
                 <span class="price">10 ₼</span>
             </div>
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/37206679/pexels-photo-37206679.jpeg" alt="Yunan salatı">
+            <div class="menu-item" data-ad="Yunan Salatı" data-qiymet="9">
+                <img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?w=500" alt="Yunan salatı">
                 <h3>Yunan Salatı</h3>
                 <p>Feta pendiri və zeytun ilə.</p>
                 <span class="price">9 ₼</span>
             </div>
+            <div class="menu-item" data-ad="Mimoza Salatı" data-qiymet="9">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500" alt="Mimoza salatı">
+                <h3>Mimoza Salatı</h3>
+                <p>Balıq, yumurta, pendir və mayonez ilə.</p>
+                <span class="price">9 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Ton Balıqlı Salat" data-qiymet="11">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500" alt="Ton balıqlı salat">
+                <h3>Ton Balıqlı Salat</h3>
+                <p>Ton balığı, təzə tərəvəz və zeytun yağı ilə.</p>
+                <span class="price">11 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Qreçka Salatı" data-qiymet="7">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500" alt="Qreçka salatı">
+                <h3>Qreçka Salatı</h3>
+                <p>Qreçka, tərəvəz və göyərti ilə.</p>
+                <span class="price">7 ₼</span>
+            </div>
         </div>
 
+        
         <div class="menu-grid" data-content="desert">
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/27848148/pexels-photo-27848148.jpeg" alt="Şokolad tortu">
+            <div class="menu-item" data-ad="Şokolad Tortu" data-qiymet="6">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=500" alt="Şokolad tortu">
                 <h3>Şokolad Tortu</h3>
                 <p>Ev şəraitində hazırlanmış tort.</p>
                 <span class="price">6 ₼</span>
             </div>
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/25746365/pexels-photo-25746365.jpeg" alt="Çizkeyk">
+            <div class="menu-item" data-ad="Çizkeyk" data-qiymet="7">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500" alt="Çizkeyk">
                 <h3>Çizkeyk</h3>
                 <p>Yumşaq və dadlı çizkeyk.</p>
                 <span class="price">7 ₼</span>
             </div>
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/10865939/pexels-photo-10865939.jpeg" alt="Baklava">
+            <div class="menu-item" data-ad="Baklava" data-qiymet="5">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500" alt="Baklava">
                 <h3>Baklava</h3>
                 <p>Ənənəvi Azərbaycan baklavası.</p>
                 <span class="price">5 ₼</span>
             </div>
+            <div class="menu-item" data-ad="Tiramisu" data-qiymet="8">
+                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500" alt="Tiramisu">
+                <h3>Tiramisu</h3>
+                <p>İtalyan üslubunda, qəhvəli desert.</p>
+                <span class="price">8 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Panna Cotta" data-qiymet="7">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500" alt="Panna Cotta">
+                <h3>Panna Cotta</h3>
+                <p>Yumşaq italyan deserti, meyvə sousu ilə.</p>
+                <span class="price">7 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Profiterol" data-qiymet="6">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=500" alt="Profiterol">
+                <h3>Profiterol</h3>
+                <p>Şokolad souslu, yumşaq xəmir topaları.</p>
+                <span class="price">6 ₼</span>
+            </div>
         </div>
 
+        
         <div class="menu-grid" data-content="ickiler">
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/18067066/pexels-photo-18067066.jpeg" alt="Çay">
+            <div class="menu-item" data-ad="Azərbaycan Çayı" data-qiymet="3">
+                <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500" alt="Azərbaycan çayı">
                 <h3>Azərbaycan Çayı</h3>
-                <p>Ənənəvi armudu stəkanda çay.</p>
+                <p>Ənənəvi armudu stəkanda, limon ilə.</p>
                 <span class="price">3 ₼</span>
             </div>
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/33223927/pexels-photo-33223927.jpeg" alt="Limonad">
+            <div class="menu-item" data-ad="Türk Qəhvəsi" data-qiymet="4">
+                <img src="https://images.unsplash.com/photo-1578374173705-969cbe6f2d6b?w=500" alt="Türk qəhvəsi">
+                <h3>Türk Qəhvəsi</h3>
+                <p>Ənənəvi üsulla, mis cezvedə.</p>
+                <span class="price">4 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Ev Limonadı" data-qiymet="4">
+                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500" alt="Limonad">
                 <h3>Ev Limonadı</h3>
                 <p>Təzə limondan hazırlanmış.</p>
                 <span class="price">4 ₼</span>
             </div>
-            <div class="menu-item">
-                <img src="https://images.pexels.com/photos/32844754/pexels-photo-32844754.jpeg" alt="Qəhvə">
-                <h3>Türk Qəhvəsi</h3>
-                <p>Ənənəvi üsulla hazırlanmış.</p>
+            <div class="menu-item" data-ad="Espresso" data-qiymet="5">
+                <img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=500" alt="Espresso">
+                <h3>Espresso</h3>
+                <p>İtalyan üslubunda güclü qəhvə.</p>
+                <span class="price">5 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Kapuçino" data-qiymet="6">
+                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=500" alt="Kapuçino">
+                <h3>Kapuçino</h3>
+                <p>Südlü və köpüklü İtalyan qəhvəsi.</p>
+                <span class="price">6 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Nanə Çayı" data-qiymet="3">
+                <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500" alt="Nanə çayı">
+                <h3>Nanə Çayı</h3>
+                <p>Təzə nanə ilə hazırlanmış isti çay.</p>
+                <span class="price">3 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Portağal Şirəsi" data-qiymet="5">
+                <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=500" alt="Portağal şirəsi">
+                <h3>Portağal Şirəsi</h3>
+                <p>Təzə sıxılmış portağal şirəsi.</p>
+                <span class="price">5 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Ayran" data-qiymet="3">
+                <img src="https://images.pexels.com/photos/30878211/pexels-photo-30878211.jpeg?w=500" alt="Ayran">
+                <h3>Ayran</h3>
+                <p>Ev şəraitində hazırlanmış sərin ayran.</p>
+                <span class="price">3 ₼</span>
+            </div>
+            <div class="menu-item" data-ad="Qatıq" data-qiymet="4">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500" alt="Qatıq">
+                <h3>Qatıq</h3>
+                <p>Təbii süd məhsulu, təzə və dadlı.</p>
                 <span class="price">4 ₼</span>
             </div>
         </div>
@@ -131,6 +260,7 @@
         <p>© 2026 Sahil Restoranı. Bütün hüquqlar qorunur.</p>
     </footer>
 
+    <a href="rezervasiya.html" class="float-reserve">📅 Rezervasiya</a>
     <button class="back-to-top" id="backToTop">↑</button>
     <script src="script.js"></script>
 </body>

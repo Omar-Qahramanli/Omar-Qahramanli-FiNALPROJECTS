@@ -32,25 +32,71 @@ tabButtons.forEach(function (btn) {
 
 
 
+
 const galleryImages = document.querySelectorAll('.gallery-grid img');
+let hazirkiSekilIndex = 0;
 
-galleryImages.forEach(function (img) {
+galleryImages.forEach(function (img, index) {
     img.addEventListener('click', function () {
-        const overlay = document.createElement('div');
-        overlay.className = 'lightbox';
-
-        const bigImg = document.createElement('img');
-        bigImg.src = img.src;
-
-        overlay.appendChild(bigImg);
-        document.body.appendChild(overlay);
-
-        overlay.addEventListener('click', function () {
-            overlay.remove();
-        });
+        hazirkiSekilIndex = index;
+        sekilAch();
     });
 });
 
+function sekilAch() {
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox';
+    overlay.id = 'lightboxOverlay';
+
+    
+    const bigImg = document.createElement('img');
+    bigImg.src = galleryImages[hazirkiSekilIndex].src;
+    bigImg.id = 'lightboxImg';
+    overlay.appendChild(bigImg);
+
+    //sol
+    const solOx = document.createElement('button');
+    solOx.className = 'lightbox-arrow left';
+    solOx.innerHTML = '&#10094;'; 
+    solOx.onclick = function (e) {
+        e.stopPropagation();
+        evvelkiSekil();
+    };
+    overlay.appendChild(solOx);
+
+//    sağ
+    const sagOx = document.createElement('button');
+    sagOx.className = 'lightbox-arrow right';
+    sagOx.innerHTML = '&#10095;'; 
+    sagOx.onclick = function (e) {
+        e.stopPropagation();
+        novbetiSekil();
+    };
+    overlay.appendChild(sagOx);
+
+    
+    overlay.addEventListener('click', function () {
+        overlay.remove();
+    });
+
+    document.body.appendChild(overlay);
+}
+
+function novbetiSekil() {
+    hazirkiSekilIndex++;
+    if (hazirkiSekilIndex >= galleryImages.length) {
+        hazirkiSekilIndex = 0;
+    }
+    document.getElementById('lightboxImg').src = galleryImages[hazirkiSekilIndex].src;
+}
+
+function evvelkiSekil() {
+    hazirkiSekilIndex--;
+    if (hazirkiSekilIndex < 0) {
+        hazirkiSekilIndex = galleryImages.length - 1;
+    }
+    document.getElementById('lightboxImg').src = galleryImages[hazirkiSekilIndex].src;
+}
 
 
 const reservationForm = document.getElementById('reservationForm');
@@ -172,5 +218,37 @@ if (sortSelect) {
         yemekler.forEach(function (yemek) {
             aktivGrid.appendChild(yemek);
         });
+    });
+}
+
+
+if (searchInput) {
+    searchInput.addEventListener('input', function () {
+        const axtaris = searchInput.value.toLowerCase();
+        const aktivGrid = document.querySelector('.menu-grid.active');
+        const notFoundMessage = document.getElementById('notFoundMessage');
+
+        if (!aktivGrid) return;
+
+        const yemekler = aktivGrid.querySelectorAll('.menu-item');
+        let tapilanlar = 0;
+
+        yemekler.forEach(function (yemek) {
+            const ad = yemek.dataset.ad.toLowerCase();
+
+            if (ad.includes(axtaris)) {
+                yemek.classList.remove('hidden');
+                tapilanlar++;
+            } else {
+                yemek.classList.add('hidden');
+            }
+        });
+
+       
+        if (tapilanlar === 0) {
+            notFoundMessage.style.display = 'block';
+        } else {
+            notFoundMessage.style.display = 'none';
+        }
     });
 }
